@@ -1,0 +1,16 @@
+<div>
+    <h1><%= @tag.phrase %></h1>
+</div>
+
+<div class="row">
+    <!-- a place for current user stats -->
+	    <% @tag.tweets.order(created_at: :desc).each do |tweet| %>
+	        <div class="col-md-12 tweet-area borderline">
+		    <p>
+		        <%= tweet.user.name %> <%= "@#{tweet.user.name}" %> 
+							• <%= time_ago_in_words(tweet.created_at) %>
+		    </p>
+		    <p><%= tweet.message.html_safe %></p>
+	    <% end %>
+    </div>
+</div>
